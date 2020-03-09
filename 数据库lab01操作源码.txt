@@ -131,12 +131,24 @@ AFTER INSERT,AFTER DELETE,AFTER UPDATE
 		
 	SET FOREIGN_KEY_CHECKS = 0;	//暂时停掉外键约束
 	update book left join borrow on book.id=borrow.book_id set book.id='CB1190',borrow.book_id='CB1190' where book.id='CB114';
+	之后增加级联操作可以直接更新不用停掉外键约束。
 
 
+8)	
 
-8)	测试用语句：
-	select * from borrow where return_date is null;
+删除外键约束：		alter table borrow drop foreign key fk_emp_dept1;
+			alter table borrow drop foreign key fk_emp_dept2;
+增加级联删除和更新：	
+			alter table borrow ADD CONSTRAINT fk_emp_dept1
+			FOREIGN KEY(book_id) REFERENCES book(id) ON DELETE CASCADE ON UPDATE CASCADE;
 
+			alter table borrow ADD CONSTRAINT fk_emp_dept2
+			FOREIGN KEY(reader_id) REFERENCES reader(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+			delete from borrow where book_id='CB1190';
+			INSERT INTO BORROW(book_id,reader_id,borrow_date,return_date) VALUES('CB1190','PB003','2012-12-1',NULL);		
+
+			update book set book.id='CB114' where book.id='CB1190';
 
 mysql -hlocalhost -uroot -p456321
 
