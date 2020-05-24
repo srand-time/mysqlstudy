@@ -1,0 +1,22 @@
+insert into bank_table(bank_name,city,money) VALUES
+('SHB','shanghai',135798608),('BJB','beijin',8889997770),('GZB','guangzhou',3344556677),('SZB','shengzhen',1432567854);
+
+insert into customer_contactor_table(id,name,phone_number,email) VALUES
+(null,'as1','123','654345@qq.com'),(null,'bc3','234','bc3@mail.ustc.edu.cn'),
+(null,'tty','987','wings@163.com'),(null,'uy','007','iugh@ustc.edu.cn');
+
+insert into customer_table(idcard_number,name,phone_number,contactor_id,
+relationship,live_place) values
+('112233','mayun','777',1,2,'hangzhou'),('345678','dinglei','666',2,4,'shanghai'),
+('789101','zhangsan','555',3,2,'hefei');
+
+insert into saving_account_table (id,money,open_date,interest_rate,currency_type) values
+('sav1',12345678,'1999-12-21 09:59:43',5.05,21)
+,('sav2',2345678,'1991-12-25 11:16:22',4.3,21);
+
+insert into checking_account_table(id,money,open_date,overdraft) values
+('ca1',2386654,'2005-11-5',1000000),('ca2',111111,'1998-5-4',10000);
+
+insert into customer_account_table(idcard_number,bank_name,account1_id,
+account2_id,visitdate1,visitdate2) values
+('112233','BJB','sav1','ca1','2019-1-1 00:00:00','2020-4-1 10:30:32'),('345678','SHB','sav2','ca2','2019-3-20 08:45:02','2020-4-1 10:30:32');
